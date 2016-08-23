@@ -21,9 +21,7 @@ titanic_1 <- titanic_org %>% mutate(embarked = gsub("^$|^ $", "S", embarked))
 
 # Task 2: Age - Populate missing values with mean of age column.
 
-titanic_mean_age <- titanic_1 %>% summarise(mean_age = mean(age, na.rm = TRUE))
-
-titanic_2 <- titanic_1 %>% mutate(age =ifelse(is.na(age), titanic_mean_age , age))
+titanic_2 <- titanic_1 %>% mutate(age =ifelse(is.na(age), mean(age, na.rm = TRUE) , age))
 
 # A better way to fill in the N/A values would be to group by embarked and sex and then use the
 # median value of each group to fill in the N/A value.
@@ -43,3 +41,8 @@ titanic_4 <- titanic_3 %>% mutate(cabin = gsub("^$|^ $", "Crew", cabin))
 
 titanic_5 <- titanic_4 %>% mutate(has_cabin_number = ifelse( cabin == "Crew", 0 , 1))
 
+# Final Data Frame saved as titanic_clean and arranged by group for "company" variable.
+titanic_clean <- titanic_5
+
+# Saving the final data frame
+write.csv(titanic_clean, file="~/Desktop/Data Science/3 Data Wranging/Exercise 2/Data-Wrangling-Exercise-2-Dealing-with-missing-values/titanic_clean.csv")

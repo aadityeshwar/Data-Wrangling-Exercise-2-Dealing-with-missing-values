@@ -25,6 +25,15 @@ titanic_mean_age <- titanic_1 %>% summarise(mean_age = mean(age, na.rm = TRUE))
 
 titanic_2 <- titanic_1 %>% mutate(age =ifelse(is.na(age), titanic_mean_age , age))
 
+# A better way to fill in the N/A values would be to group by embarked and sex and then use the
+# median value of each group to fill in the N/A value.
+
+# Task 3: Lifeboat - Replace missing values with "none"
+
+titanic_3 <- titanic_2 %>% mutate(boat = gsub("^$|^ $", "none", boat))
+
+# check if you managed to remove all missing values
+unique(titanic_3$boat)
 
 
 

@@ -13,3 +13,9 @@ titanic_org<- read.csv("~/Desktop/Data Science/3 Data Wranging/Exercise 2/Data-W
 
 # #Looking at the structure of the data set
 glimpse(titanic_org)
+View(titanic_org)
+
+# Task 1: Port of embarkation - Replace Blank cells with "S"
+
+titanic_1 <- titanic_org %>% mutate(embarked = gsub("^$|^ $", "S", embarked))
+

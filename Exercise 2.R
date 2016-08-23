@@ -19,3 +19,12 @@ View(titanic_org)
 
 titanic_1 <- titanic_org %>% mutate(embarked = gsub("^$|^ $", "S", embarked))
 
+# Task 2: Age - Populate missing values with mean of age column.
+
+titanic_mean_age <- titanic_1 %>% summarise(mean_age = mean(age, na.rm = TRUE))
+
+titanic_2 <- titanic_1 %>% mutate(age =ifelse(is.na(age), titanic_mean_age , age))
+
+
+
+

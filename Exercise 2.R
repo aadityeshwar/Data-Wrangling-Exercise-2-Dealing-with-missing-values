@@ -35,5 +35,7 @@ titanic_3 <- titanic_2 %>% mutate(boat = gsub("^$|^ $", "none", boat))
 # check if you managed to remove all missing values
 unique(titanic_3$boat)
 
+# Task 4: Cabin - The missing values could indicate that these passengers were CREW members.
 
+titanic_4 <- titanic_3 %>% mutate(cabin = gsub("^$|^ $", "Crew", cabin))
 

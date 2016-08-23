@@ -39,3 +39,7 @@ unique(titanic_3$boat)
 
 titanic_4 <- titanic_3 %>% mutate(cabin = gsub("^$|^ $", "Crew", cabin))
 
+# Task 5: New Colomn - has_cabin_number : 0 -> Crew , 1 -> Any other
+
+titanic_5 <- titanic_4 %>% mutate(has_cabin_number = ifelse( cabin == "Crew", 0 , 1))
+
